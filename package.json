@@ -1,0 +1,25 @@
+{
+  "name": "movie_api",
+  "version": "1.0.0",
+  "description": "The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alvaromedia/movie_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alvaromedia/movie_api/issues"
+  },
+  "homepage": "https://github.com/Alvaromedia/movie_api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.1"
+  }
+}

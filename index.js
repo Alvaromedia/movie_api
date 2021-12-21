@@ -19,56 +19,157 @@ app.use(methodOverride());
 let movies = [
   {
     title: "The Shawshank Redemption",
-    year: "1994",
+    director: {
+      name: "Frank Darabont",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Drama",
   },
   {
     title: "The Godfather",
-    year: "1972",
+    director: {
+      name: "Francis Ford Coppola",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Drama",
   },
   {
     title: "The Godfather: part II",
-    year: "1974",
+    director: {
+      name: "Francis Ford Coppola",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Drama",
   },
   {
     title: "The Dark Knight",
-    year: "2008",
+    director: {
+      name: "Cristopher Nolan",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Action",
   },
   {
     title: "12 angry men",
-    year: "1957",
+    director: {
+      name: "Sidney Lumet",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Thriller",
   },
   {
     title: "Schindler's List ",
-    year: "1993",
+    director: {
+      name: "Steven Spielberg",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Drama",
   },
   {
     title: "The Lord of the Rings: The Return of the King",
-    year: "2003",
+    director: {
+      name: "Peter Jackson",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Fantasy",
   },
   {
     title: "Spider-man: No way Home",
-    year: "2021",
+    director: {
+      name: "Jon Watts",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Sci-Fi",
   },
   {
     title: "Pulp Fiction",
-    year: "1994",
+    director: {
+      name: "Quentin Tarantino",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Thriller",
   },
   {
     title: "The Good, the Bad and the Ugly",
-    year: "1966",
+    director: {
+      name: "Sergio Leone",
+      birth: 0000,
+      death: 1111,
+    },
+    genre: "Western",
   },
 ];
 
+// Get welcome message
 app.get("/", (req, res) => {
   res.send("Welcome to my movie-based app!");
 });
 
+// Get secret url
 app.get("/secreturl", (req, res) => {
   res.send("This is a secret URL");
 });
 
+// Get all movies
 app.get("/movies", (req, res) => {
-  res.json(movies);
+  res.status(200).json(movies);
+});
+
+// Get specific movie by name
+app.get("/movies/:title", (req, res) => {
+  res.status(200).json(
+    movies.find((movie) => {
+      return movie.title === req.params.title;
+    })
+  );
+});
+
+// Get genre
+app.get("/genres/:genre", (req, res) => {
+  res.status(200).send("Successful get request");
+});
+
+// Return data about director.
+app.get("/directors/:name", (req, res) => {
+  res.status(200).json(
+    movies.find((movie) => {
+      return movie.director.name === req.params.name;
+    })
+  );
+});
+
+// Add new user
+app.post("/users/:createUser", (req, res) => {
+  res.send("Successful registration");
+});
+
+// Allow users to update their user information
+app.put("/users/:modifyUser", (req, res) => {
+  res.send("Successful modification");
+});
+
+//Add movie to favourites
+app.post("/favourites/:favouriteMovie", (req, res) => {
+  res.send("Successfully added movie to favourites");
+});
+
+// Delete movie from favourites
+app.delete("/favourites/:deleteMovie", (req, res) => {
+  res.send("Successfully deleted movie from favourites");
+});
+
+// Delete user
+app.delete("/users/:deleteUser", (req, res) => {
+  res.send("Successfully deleted user");
 });
 
 app.use(express.static("public"));

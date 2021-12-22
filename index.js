@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
+const res = require("express/lib/response");
 
 const app = express();
 
@@ -148,27 +149,27 @@ app.get("/directors/:name", (req, res) => {
 });
 
 // Add new user
-app.post("/users/:createUser", (req, res) => {
+app.post("/users/:create", (req, res) => {
   res.send("Successful registration");
 });
 
 // Allow users to update their user information
-app.put("/users/:modifyUser", (req, res) => {
+app.put("/users/:modify", (req, res) => {
   res.send("Successful modification");
 });
 
 //Add movie to favourites
-app.post("/favourites/:favouriteMovie", (req, res) => {
+app.post("/favourites/:favourite-movie", (req, res) => {
   res.send("Successfully added movie to favourites");
 });
 
 // Delete movie from favourites
-app.delete("/favourites/:deleteMovie", (req, res) => {
+app.delete("/favourites/:delete", (req, res) => {
   res.send("Successfully deleted movie from favourites");
 });
 
 // Delete user
-app.delete("/users/:deleteUser", (req, res) => {
+app.delete("/users/:delete", (req, res) => {
   res.send("Successfully deleted user");
 });
 

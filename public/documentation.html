@@ -59,31 +59,31 @@
       </tr>
       <tr>
         <td>Add new user</td>
-        <td>/users/:create</td>
+        <td>/users</td>
         <td>POST</td>
         <td>Adds new user to JSON object.</td>
       </tr>
       <tr>
         <td>Allow users to update their user information</td>
-        <td>/users/:modify</td>
+        <td>/users/:Username</td>
         <td>PUT</td>
         <td>Returns the data modifyed by the user</td>
       </tr>
       <tr>
         <td>Add movie to favourites</td>
-        <td>/favourites/:favourite-movie</td>
+        <td>users/:Username/movies/:MovieID</td>
         <td>POST</td>
         <td>Returns a text confirming which movie was added successfully.</td>
       </tr>
       <tr>
         <td>Delete movie from favourites</td>
-        <td>/favourites/:delete</td>
+        <td>users/:Username/movies/:MovieID</td>
         <td>DELETE</td>
         <td>Returns a text confirming which movie was removed successfully.</td>
       </tr>
       <tr>
         <td>Delete user</td>
-        <td>/users/:delete</td>
+        <td>/users/:Username</td>
         <td>DELETE</td>
         <td>Returns a text confirming that the user was deleted.</td>
       </tr>

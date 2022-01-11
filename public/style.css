@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.5rem;
+  margin: 5rem;
+}
+
+.documentation-goals {
+  margin-bottom: 3rem;
+}
+
+.documentation-goals > h1 {
+  margin-bottom: 2rem;
+}
+
+li {
+  line-height: 2rem;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+.example-wrapper {
+  color: rgb(0, 109, 109);
+}

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 
@@ -31,60 +32,146 @@
         <th>Request</th>
         <th>URL</th>
         <th>HTTP Method</th>
+        <th>Request body data format</th>
         <th>Response</th>
       </tr>
       <tr>
         <td>Get a list of all movies</td>
         <td>/movies</td>
         <td>GET</td>
+        <td>none</td>
         <td>Returns a JSON object of all movies.</td>
       </tr>
       <tr>
         <td>Get data about a specific movie</td>
         <td>/movies/:title</td>
         <td>GET</td>
-        <td>Returns data about a specific movie.</td>
+        <td>none</td>
+        <td>Returns a JSON object of a specific movie.</td>
       </tr>
       <tr>
         <td>Return data about a genre by name/title.</td>
         <td>/genres/:genre</td>
         <td>GET</td>
-        <td>Returns data about a genre (e.g.,'Thriller')</td>
+        <td>none</td>
+        <td>Returns a JSON object with data about the genre (e.g.,'Thriller')</td>
       </tr>
       <tr>
         <td>Get data about director</td>
         <td>/directors/:name</td>
         <td>GET</td>
-        <td>Returns data about the director</td>
+        <td>none</td>
+        <td>Returns a JSON object with data about the director</td>
       </tr>
       <tr>
         <td>Add new user</td>
         <td>/users</td>
         <td>POST</td>
-        <td>Adds new user to JSON object.</td>
+        <td>A JSON object holding the data about the student to add
+          <pre class="example-wrapper">
+          e.g,
+          {
+          "Username": "alvaro7",
+          "Password": "bruh1111",
+          "Email": "blablebli@gmail.com",
+          "Birthday": "Feb 2, 2020"
+          }
+        </pre class="example-wrapper">
+        </td>
+        <td> Returns a JSON object with the created user
+          <pre class="example-wrapper">
+            e.g,
+            {
+              "Username": "alvaro7",
+              "Password": "bruh1111",
+              "Email": "blablebli@gmail.com",
+              "Birthday": "1970-02-11T23:00:00.000Z",
+              "FavouriteMovies": [],
+              "_id": "61dd61f1d655b275175b1867",
+              "__v": 0
+            }
+          </pre>
+        </td>
       </tr>
       <tr>
         <td>Allow users to update their user information</td>
         <td>/users/:Username</td>
         <td>PUT</td>
-        <td>Returns the data modifyed by the user</td>
+        <td>A JSON object holding the data about the student to update
+          <pre class="example-wrapper">
+          e.g,
+          {
+          "Username": "test",
+          "Password": "test111",
+          "Email": "test@test.com",
+          "Birthday": "Feb 2, 2020"
+          }
+        </pre class="example-wrapper">
+        </td>
+        <td>Returns a JSON object with the modifyed user
+          <pre class="example-wrapper">
+          e.g,
+          {
+          "_id": "61dc4737f1d243370d2adc76",
+          "Username": "alvaro6",
+          "Password": "bruno1111",
+          "Email": "bruno@yahoo.com",
+          "Birthday": "1990-01-31T23:00:00.000Z",
+          "FavouriteMovies": [],
+          "__v": 0
+          }
+        </pre class="example-wrapper">
+        </td>
       </tr>
       <tr>
         <td>Add movie to favourites</td>
         <td>users/:Username/movies/:MovieID</td>
         <td>POST</td>
-        <td>Returns a text confirming which movie was added successfully.</td>
+        <td>none</td>
+        <td>Returns a JSON object updated.
+          <pre class="example-wrapper">
+            e.g,
+            {
+            "_id": "61dc4737f1d243370d2adc76",
+            "Username": "alvaro6",
+            "Password": "bruno1111",
+            "Email": "bruno@yahoo.com",
+            "Birthday": "1990-01-31T23:00:00.000Z",
+            "FavouriteMovies": [
+            "61d86595dd562433914694f3"
+            ],
+            "__v": 0
+            }
+
+          </pre class="example-wrapper">
+
+        </td>
       </tr>
       <tr>
         <td>Delete movie from favourites</td>
         <td>users/:Username/movies/:MovieID</td>
         <td>DELETE</td>
-        <td>Returns a text confirming which movie was removed successfully.</td>
+        <td>none</td>
+        <td>Returns an updated JSON object.
+          <pre class="example-wrapper">
+            e.g,
+            { 
+            "_id": "61dc4737f1d243370d2adc76", 
+            "Username": "alvaro6", 
+            "Password": "bruno1111", 
+            "Email": "bruno@yahoo.com", 
+            "Birthday": "1990-01-31T23:00:00.000Z", 
+            "FavouriteMovies": [], 
+            "__v": 0 
+            }
+          </pre class="example-wrapper">
+        </td>
       </tr>
       <tr>
         <td>Delete user</td>
         <td>/users/:Username</td>
         <td>DELETE</td>
+        <td>none</td>
         <td>Returns a text confirming that the user was deleted.</td>
       </tr>
     </table>

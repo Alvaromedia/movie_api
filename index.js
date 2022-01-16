@@ -20,7 +20,6 @@ const express = require("express");
 
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-// const methodOverride = require("method-override"); // TODO: remove
 
 const app = express();
 
@@ -49,13 +48,12 @@ app.use(cors({
 }));
 */
 
-let auth = require("./auth.js")(app);
+let auth = require("./auth.js")(app); // TODO: is not auth.js but only auth
 const passport = require("passport");
 require("./passport");
 
 app.use(morgan("common"));
 app.use(bodyParser.json());
-// app.use(methodOverride()); // TODO: remove
 
 // GET welcome message
 app.get("/", (req, res) => {

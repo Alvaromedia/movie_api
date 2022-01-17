@@ -48,7 +48,7 @@ app.use(cors({
 }));
 */
 
-let auth = require("./auth.js")(app);
+let auth = require("./auth.js")(app); // TODO: is not auth.js but only auth
 const passport = require("passport");
 require("./passport");
 

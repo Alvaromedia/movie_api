@@ -49,7 +49,7 @@ app.use(cors({
 }));
 */
 
-let auth = require("./auth.js")(app);
+require("./auth.js")(app);
 const passport = require("passport");
 require("./passport");
 
@@ -78,7 +78,7 @@ app.get(
   (req, res) => {
     Movies.find()
       .then((movies) => {
-        res.status(201).json(movies);
+        res.status(200).json(movies);
       })
       .catch((err) => {
         console.error(err);
@@ -201,7 +201,7 @@ app.post(
 app.get("/users", (req, res) => {
   Users.find()
     .then((users) => {
-      res.status(201).json(users);
+      res.status(200).json(users);
     })
     .catch((err) => {
       console.error(err);

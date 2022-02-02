@@ -75,10 +75,10 @@ app.get(
   // passport.authenticate("jwt", { session: false }), TODO: it's temporary
   (req, res) => {
     Movies.find()
-      .then((movies) => {
+      .then(movies => {
         res.status(200).json(movies);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
@@ -88,10 +88,10 @@ app.get(
 // GET specific movie by title
 app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({ Title: req.params.title })
-    .then((movie) => {
+    .then(movie => {
       res.json(movie);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.status(500).send('Error: ' + err);
     });
@@ -100,10 +100,10 @@ app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req
 // GET data about genre
 app.get('/genres/:genre', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({ 'Genre.Name': req.params.genre })
-    .then((movie) => {
+    .then(movie => {
       res.json(movie.Genre);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.status(500).send('Error: ' + err);
     });
@@ -112,10 +112,10 @@ app.get('/genres/:genre', passport.authenticate('jwt', { session: false }), (req
 // GET data about director
 app.get('/directors/:name', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({ 'Director.Name': req.params.name })
-    .then((movie) => {
+    .then(movie => {
       res.json(movie.Director);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.status(500).send('Error: ' + err);
     });
@@ -153,7 +153,7 @@ app.post(
 
     let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username }) // Search to see if a user with the requested username already exists
-      .then((user) => {
+      .then(user => {
         if (user) {
           // If the user is found send a response saying it already exists
           return res.status(400).send(req.body.Username + ' already exists');
@@ -164,16 +164,16 @@ app.post(
             Email: req.body.Email,
             Birthday: req.body.Birthday,
           })
-            .then((user) => {
+            .then(user => {
               res.status(201).json(user);
             })
-            .catch((error) => {
+            .catch(error => {
               console.error(error);
               res.status(500).send('Error: ' + error);
             });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
         res.status(500).send('Error: ' + error);
       });
@@ -183,10 +183,10 @@ app.post(
 // GET all users
 app.get('/users', (req, res) => {
   Users.find()
-    .then((users) => {
+    .then(users => {
       res.status(200).json(users);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.status(500).send('Error: ' + err);
     });
@@ -195,10 +195,10 @@ app.get('/users', (req, res) => {
 // GET a user by username
 app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOne({ Username: req.params.Username })
-    .then((user) => {
+    .then(user => {
       res.json(user);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.status(500).send('Error: ' + err);
     });
@@ -302,14 +302,14 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
 
 app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username })
-    .then((user) => {
+    .then(user => {
       if (!user) {
         res.status(400).send(req.params.Username + " wasn't found");
       } else {
         res.status(200).send(req.params.Username + ' was successfully deleted.');
       }
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.status(500).send('Error: ' + err);
     });

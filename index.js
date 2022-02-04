@@ -72,7 +72,7 @@ app.get('/documentation', (req, res) => {
 
 app.get(
   '/movies',
-  // passport.authenticate("jwt", { session: false }), TODO: it's temporary
+  passport.authenticate('jwt', { session: false }), // TODO: it's temporary
   (req, res) => {
     Movies.find()
       .then(movies => {

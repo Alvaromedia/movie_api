@@ -48,12 +48,12 @@ app.use(cors({
 }));
 */
 
-require('./auth.js')(app);
-const passport = require('passport');
-require('./passport');
-
 app.use(morgan('common'));
 app.use(bodyParser.json());
+
+const passport = require('passport');
+require('./auth.js')(app);
+require('./passport');
 
 // GET welcome message
 app.get('/', (req, res) => {
